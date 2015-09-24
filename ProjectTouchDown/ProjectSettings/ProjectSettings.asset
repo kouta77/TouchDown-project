@@ -5,10 +5,10 @@ PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 7
   AndroidProfiler: 0
-  defaultScreenOrientation: 4
+  defaultScreenOrientation: 0
   targetDevice: 2
   targetResolution: 0
-  accelerometerFrequency: 60
+  accelerometerFrequency: 0
   companyName: Freelancer
   productName: ProjectTouchDown
   defaultCursor: {fileID: 0}
@@ -99,16 +99,25 @@ PlayerSettings:
   uIStatusBarHidden: 1
   uIExitOnSuspend: 0
   uIStatusBarStyle: 0
-  iPhoneSplashScreen: {fileID: 0}
-  iPhoneHighResSplashScreen: {fileID: 0}
-  iPhoneTallHighResSplashScreen: {fileID: 0}
-  iPhone47inSplashScreen: {fileID: 0}
-  iPhone55inPortraitSplashScreen: {fileID: 0}
-  iPhone55inLandscapeSplashScreen: {fileID: 0}
-  iPadPortraitSplashScreen: {fileID: 0}
-  iPadHighResPortraitSplashScreen: {fileID: 0}
-  iPadLandscapeSplashScreen: {fileID: 0}
-  iPadHighResLandscapeSplashScreen: {fileID: 0}
+  iPhoneSplashScreen: {fileID: 2800000, guid: 379929d1ec5db914895467d365fd1fc5, type: 3}
+  iPhoneHighResSplashScreen: {fileID: 2800000, guid: 379929d1ec5db914895467d365fd1fc5,
+    type: 3}
+  iPhoneTallHighResSplashScreen: {fileID: 2800000, guid: 379929d1ec5db914895467d365fd1fc5,
+    type: 3}
+  iPhone47inSplashScreen: {fileID: 2800000, guid: 379929d1ec5db914895467d365fd1fc5,
+    type: 3}
+  iPhone55inPortraitSplashScreen: {fileID: 2800000, guid: 379929d1ec5db914895467d365fd1fc5,
+    type: 3}
+  iPhone55inLandscapeSplashScreen: {fileID: 2800000, guid: 379929d1ec5db914895467d365fd1fc5,
+    type: 3}
+  iPadPortraitSplashScreen: {fileID: 2800000, guid: 379929d1ec5db914895467d365fd1fc5,
+    type: 3}
+  iPadHighResPortraitSplashScreen: {fileID: 2800000, guid: 379929d1ec5db914895467d365fd1fc5,
+    type: 3}
+  iPadLandscapeSplashScreen: {fileID: 2800000, guid: 379929d1ec5db914895467d365fd1fc5,
+    type: 3}
+  iPadHighResLandscapeSplashScreen: {fileID: 2800000, guid: 379929d1ec5db914895467d365fd1fc5,
+    type: 3}
   iOSLaunchScreenType: 0
   iOSLaunchScreenPortrait: {fileID: 0}
   iOSLaunchScreenLandscape: {fileID: 0}
@@ -135,7 +144,7 @@ PlayerSettings:
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:
-    - m_Icon: {fileID: 0}
+    - m_Icon: {fileID: 2800000, guid: eb5f6e2757c821940b69cf1456f7865a, type: 3}
       m_Size: 128
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs: []
@@ -396,7 +405,7 @@ PlayerSettings:
   WebGL::audioCompressionFormat: 4
   WebGL::exceptionSupport: 0
   WebGL::memorySize: 256
-  iOS::Architecture: 2
+  iOS::Architecture: 0
   iOS::ScriptingBackend: 0
   boolPropertyNames:
   - WebGL::analyzeBuildSize
