@@ -21,6 +21,7 @@ public class BackgroundController : MonoBehaviour {
 
 	public int Indexu = 0;
 
+	private bool gameStarted = false;
 	// Use this for initialization
 	void Start () {
 		Lastinastance = GameObject.FindObjectOfType<BG_part_ctrl> ().gameObject;
@@ -35,20 +36,22 @@ public class BackgroundController : MonoBehaviour {
 	}
 
 	IEnumerator ChangeBackground(){
-		Debug.Log("Started");
-		yield return new WaitForSeconds (Random.Range (5, 10));
-		Debug.Log("Passed");
+		if (gameStarted) {
+			Debug.Log ("Started");
+			yield return new WaitForSeconds (Random.Range (5, 10));
+			Debug.Log ("Passed");
 
-		var lastIndex = Indexu;
-		InstantiateBG_Final ();
-		Indexu = Random.Range(0,BGList.Count);
+			var lastIndex = Indexu;
+			InstantiateBG_Final ();
+			Indexu = Random.Range (0, BGList.Count);
 
-		while(Indexu == lastIndex){
-			Indexu = Random.Range(0,BGList.Count);
-			yield return null;
+			while (Indexu == lastIndex) {
+				Indexu = Random.Range (0, BGList.Count);
+				yield return null;
+			}
+			StartCoroutine ("ChangeBackground");
 		}
 
-		StartCoroutine ("ChangeBackground");
 	}
 
 	void InstantiateBG(){
@@ -68,4 +71,6 @@ public class BackgroundController : MonoBehaviour {
 		Lastinastance = RoadObject;
 		
 	}
+
+	public void GameStart(){gameStarted = true;}
 }
