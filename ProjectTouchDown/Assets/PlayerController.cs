@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour {
 	public GameController Controller;
@@ -19,9 +20,17 @@ public class PlayerController : MonoBehaviour {
 	public float SliderRot = 0;
 
 	public bool PlayerDead = false;
+
+	public List<Sprite> skins = new List<Sprite>();
+
+	private SpriteRenderer spriter;
+	private int currentSkin = 0;
+	private int LastSelectSkin;
 	// Use this for initialization
 	void Start () {
-		BackgroundController.TimeScale = 0.0f;
+		spriter = GetComponent<SpriteRenderer> ();
+
+		BackgroundController.TimeScale = 0.3f;
 
 	if (GameObject.FindObjectOfType<GameController> ())
 			Controller = GameObject.FindObjectOfType<GameController> ();
@@ -30,11 +39,15 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (StartGame == true)
-		BG_DIM.color = Color.Lerp(ColorsDIM[0],ColorsDIM[1], Slider);
+			BG_DIM.color = Color.Lerp (ColorsDIM [0], ColorsDIM [1], Slider);
+		else {
+			spriter.sprite = skins[currentSkin];
+		}
 
 		if (Input.GetMouseButton (0) == true && GameController.GameStart == true && PlayerDead== false) {
 			if (SlowMo == false) {
 				Camera.main.gameObject.SendMessage ("StartFunc", SendMessageOptions.RequireReceiver);
+				GameObject.FindObjectOfType<BackgroundController>().SendMessage("GameStart", SendMessageOptions.RequireReceiver);
 				StartGame = true;
 				Slider = Mathf.Lerp (Slider, 1, 15f * Time.deltaTime);
 			}
@@ -98,4 +111,18 @@ public class PlayerController : MonoBehaviour {
 		
 	}
 
+	public void NextSkin(){ if(currentSkin < skins.Count-1 )currentSkin += 1; }
+	public void lastSkin(){ if(currentSkin > 0 )currentSkin -= 1;}
+	public void skinSelection(int Mode){ 
+
+		if (Mode == 1) {//Salir
+			currentSkin = LastSelectSkin;
+		}
+		if (Mode == 0) {//entering
+			LastSelectSkin = currentSkin;
+		}
+//		if (Mode == 2) {
+//
+//		}
+	}
 }

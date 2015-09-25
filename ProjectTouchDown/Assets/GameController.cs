@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour {
 	public Collider GameplayTouchArea;
 
 	// List<GameObject> ActivateObjects = new List<GameObject>();
-	//public List<GameObject> DeactivateObjects = new List<GameObject>();
+	public List<GameObject> DeactivateObjects = new List<GameObject>();
 
 	public GameObject GamePlay_UI;
 	public GameObject GO_UI;
@@ -38,7 +38,7 @@ public class GameController : MonoBehaviour {
 				RaycastHit hit;
 				if (GameplayTouchArea.Raycast(ray, out hit, Mathf.Infinity)){
 					//foreach(var obj in ActivateObjects){obj.SetActive(true);}
-					//foreach(var obj in DeactivateObjects){obj.SetActive(false);}
+					foreach(var obj in DeactivateObjects){obj.SetActive(false);}
 					GamePlay_UI.SetActive(true);
 
 					//Start Spamming enemyes
