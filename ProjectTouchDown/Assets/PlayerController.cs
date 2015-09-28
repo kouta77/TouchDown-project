@@ -47,7 +47,9 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetMouseButton (0) == true && GameController.GameStart == true && PlayerDead== false) {
 			if (SlowMo == false) {
 				Camera.main.gameObject.SendMessage ("StartFunc", SendMessageOptions.RequireReceiver);
+				if( StartGame==false)
 				GameObject.FindObjectOfType<BackgroundController>().SendMessage("GameStart", SendMessageOptions.RequireReceiver);
+
 				StartGame = true;
 				Slider = Mathf.Lerp (Slider, 1, 15f * Time.deltaTime);
 			}
@@ -100,7 +102,8 @@ public class PlayerController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col){
 		if (col.tag == "finish") {
-			Controller.GoalCount += 1;
+			//Controller.GoalCount += 1;
+			Controller.SendMessage("GoalIncrease",SendMessageOptions.RequireReceiver);
 		}
 		if (col.tag == "Enemy") {
 			Destroy (col.gameObject);

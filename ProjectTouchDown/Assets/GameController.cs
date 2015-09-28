@@ -21,6 +21,8 @@ public class GameController : MonoBehaviour {
 	public GameObject GO_UI;
 	public Text BestSUI;
 	public Text YourSUI;
+
+	public Animator TouchDownLogo;
 	// Use this for initialization
 	void Start () {
 	
@@ -69,5 +71,22 @@ public class GameController : MonoBehaviour {
 		BackgroundController.TimeScale = 1f;
 		GameController.GameStart = false;
 		Application.LoadLevel ("MainGameplay");
+	}
+
+	public void facebookShare(){
+		string facebookshare = "https://www.facebook.com/sharer/sharer.php?u=" +  WWW.EscapeURL("https://play.google.com/store/apps/details?id=com.realityStudio.WarOfImperionLite");
+		Application.OpenURL(facebookshare);
+
+	}
+
+	public void TwitterShare(){
+		string twittershare = "http://twitter.com/home?status=" +  WWW.EscapeURL("https://play.google.com/store/apps/details?id=com.realityStudio.WarOfImperionLite");
+		Application.OpenURL(twittershare);	
+	}
+
+	public void GoalIncrease(){
+		GoalCount += 1;
+		TouchDownLogo.SetTrigger("Animate");
+		GoalCountUI.GetComponent<Animator> ().SetTrigger ("Animate");
 	}
 }

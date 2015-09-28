@@ -22,23 +22,30 @@ public class BackgroundController : MonoBehaviour {
 	public int Indexu = 0;
 
 	private bool gameStarted = false;
+
+//	private GameController controller;
 	// Use this for initialization
 	void Start () {
+//		controller = GameObject.FindObjectOfType<GameController> ();
+
 		Lastinastance = GameObject.FindObjectOfType<BG_part_ctrl> ().gameObject;
 		Lastinastance.transform.parent = this.transform;
 		InvokeRepeating ("InstantiateBG", 0.5f, 0.5f);
 
-		StartCoroutine ("ChangeBackground");
+		//StartCoroutine ("ChangeBackground");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	}
-
+	public float MaxTime = 3f;
 	IEnumerator ChangeBackground(){
 		if (gameStarted) {
 			Debug.Log ("Started");
-			yield return new WaitForSeconds (Random.Range (5, 10));
+			//if(controller.GoalCount > 0)
+			//	MaxTime = 7f;
+
+			yield return new WaitForSeconds (Random.Range (5f, 8f));
 			Debug.Log ("Passed");
 
 			var lastIndex = Indexu;
@@ -65,6 +72,7 @@ public class BackgroundController : MonoBehaviour {
 
 	}
 	void InstantiateBG_Final(){
+		Debug.Log ("final");
 		var RoadObject = Instantiate (BGList[Indexu].FinisherPart.gameObject,transform.position,transform.rotation) as GameObject;
 		RoadObject.transform.parent = this.transform;
 		RoadObject.GetComponent<BG_part_ctrl>().belowPart = Lastinastance.GetComponent<BG_part_ctrl>();
@@ -72,5 +80,5 @@ public class BackgroundController : MonoBehaviour {
 		
 	}
 
-	public void GameStart(){gameStarted = true;}
+	public void GameStart(){gameStarted = true;StartCoroutine ("ChangeBackground");}
 }
