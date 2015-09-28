@@ -513,7 +513,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxX: 5
-  EnemyPrefab: {fileID: 456650, guid: 6173720ab524c46448ae24b300dee0e2, type: 2}
+  enemyPrefab:
+  - {fileID: 456650, guid: 6173720ab524c46448ae24b300dee0e2, type: 2}
+  - {fileID: 456650, guid: eb76ecce28a21584599b3f3f1761141b, type: 2}
   BGC: {fileID: 1174631527}
 --- !u!4 &396565799
 Transform:
