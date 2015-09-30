@@ -6,6 +6,7 @@ TagManager:
   tags:
   - finish
   - Enemy
+  - Gem
   layers:
   - Default
   - TransparentFX

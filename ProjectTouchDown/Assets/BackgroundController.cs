@@ -40,13 +40,11 @@ public class BackgroundController : MonoBehaviour {
 	}
 	public float MaxTime = 3f;
 	IEnumerator ChangeBackground(){
+		//if (GameObject.FindObjectsOfType<BG_part_ctrl> ().Length > 3)
+		//	return;
+
 		if (gameStarted) {
 			Debug.Log ("Started");
-			//if(controller.GoalCount > 0)
-			//	MaxTime = 7f;
-
-			yield return new WaitForSeconds (Random.Range (5f, 8f));
-			Debug.Log ("Passed");
 
 			var lastIndex = Indexu;
 			InstantiateBG_Final ();
@@ -56,13 +54,16 @@ public class BackgroundController : MonoBehaviour {
 				Indexu = Random.Range (0, BGList.Count);
 				yield return null;
 			}
+			yield return new WaitForSeconds (Random.Range (3f, 6f));
+			Debug.Log ("Passed");
+
 			StartCoroutine ("ChangeBackground");
 		}
 
 	}
 
 	void InstantiateBG(){
-		if (GameObject.FindObjectsOfType<BG_part_ctrl> ().Length > 3)
+		if (GameObject.FindObjectsOfType<BG_part_ctrl> ().Length > 2)
 			return;
 
 		var RoadObject = Instantiate (BGList[Indexu].MainPart.gameObject,transform.position,transform.rotation) as GameObject;

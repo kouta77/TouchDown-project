@@ -31,7 +31,12 @@ public class PlayerController : MonoBehaviour {
 	public int[] skinUnlock;
 	public Button Skinbutton;
 	public Text ShopSkinText;
+
+	public ParticleSystem Smoke;
+
 	private int currentScore;
+
+
 	// Use this for initialization
 	void Start () {
 		currentScore = PlayerPrefs.GetInt ("Best", 0);
@@ -115,11 +120,13 @@ public class PlayerController : MonoBehaviour {
 }
 
 	void OnTriggerEnter2D(Collider2D col){
-		if (col.tag == "finish") {
+		if (col.tag == "Gem") {
 			//Controller.GoalCount += 1;
 			Controller.SendMessage("GoalIncrease",SendMessageOptions.RequireReceiver);
+			Destroy(col.gameObject);
 		}
 		if (col.tag == "Enemy") {
+			Smoke.Play();
 			Destroy (col.gameObject);
 			PlayerDead = true;
 			BackgroundController.TimeScale = 1.1f;

@@ -89,7 +89,7 @@ public class GameController : MonoBehaviour {
 
 	public void GoalIncrease(){
 		GoalCount += 1;
-		TouchDownLogo.SetTrigger("Animate");
+		//TouchDownLogo.SetTrigger("Animate");
 		GoalCountUI.GetComponent<Animator> ().SetTrigger ("Animate");
 	}
 }

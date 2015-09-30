@@ -6,6 +6,7 @@ public class EnemySpawnScript : MonoBehaviour {
 	public float MaxX = 5f;
 
 	public List<Transform> enemyPrefab = new List<Transform>();
+	public List<Transform> GemPrefab = new List<Transform>();
 	//public Transform EnemyPrefab;
 
 	public BackgroundController BGC;
@@ -37,6 +38,14 @@ public class EnemySpawnScript : MonoBehaviour {
 
 	IEnumerator instantiateEnemy(){
 		yield return new WaitForSeconds (Random.Range(1f,2f));
+
+		if (GameObject.FindObjectsOfType<GemScript> ().Length == 0) {
+			var newGem = Instantiate (GemPrefab[Random.Range(0,GemPrefab.Count-1)], new Vector3 (transform.position.x + Random.Range (-MaxX, MaxX), transform.position.y, 0), transform.rotation) as Transform;
+			newGem.parent = BGC.Lastinastance.transform;
+		}
+
+		if (GameObject.FindObjectsOfType<sympleEnemy> ().Length > 3) 
+			yield return null;
 
 		int Max = 0;
 		if(controller.GoalCount > 1)
