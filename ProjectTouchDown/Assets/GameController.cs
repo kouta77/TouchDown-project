@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour {
 	public GameObject GamePlay_UI;
 	public GameObject GO_UI;
 	public Text BestSUI;
+	public Text BestSUI2;
 	public Text YourSUI;
 
 	public Animator TouchDownLogo;
@@ -30,6 +31,8 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		BestSUI2.text = "Best: " + PlayerPrefs.GetInt ("Best", 0);
+
 		GoalCountUI.text = GoalCount.ToString();
 		SlowMoBar.value = SlowMoValue;
 

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 	public GameController Controller;
@@ -26,8 +27,14 @@ public class PlayerController : MonoBehaviour {
 	private SpriteRenderer spriter;
 	private int currentSkin = 0;
 	private int LastSelectSkin;
+	public string[] skinLetter;
+	public int[] skinUnlock;
+	public Button Skinbutton;
+	public Text ShopSkinText;
+	private int currentScore;
 	// Use this for initialization
 	void Start () {
+		currentScore = PlayerPrefs.GetInt ("Best", 0);
 		spriter = GetComponent<SpriteRenderer> ();
 
 		BackgroundController.TimeScale = 0.3f;
@@ -38,6 +45,13 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		ShopSkinText.text = skinLetter[currentSkin];
+		if (currentScore < skinUnlock [currentSkin])
+			Skinbutton.interactable = false;
+		else
+			if (currentScore >= skinUnlock [currentSkin])
+			Skinbutton.interactable = true;
+
 		if (StartGame == true)
 			BG_DIM.color = Color.Lerp (ColorsDIM [0], ColorsDIM [1], Slider);
 		else {
